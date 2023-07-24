@@ -14,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<ChatServices>();
+builder.Services.AddSignalR();
+
 
 var app = builder.Build();
 
@@ -29,6 +31,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<ChatHub>("chat-hub");
+app.MapHub<ChatHub>("/hubs/chat");
 
 app.Run();
